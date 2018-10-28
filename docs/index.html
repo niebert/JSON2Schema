@@ -39,16 +39,6 @@
      JSONEditor.defaults.iconlib = 'fontawesome4';
      JSONEditor.plugins.ace.theme = 'xcode';
 
-     function onChangeACE(pID,pContent) {
-        // handles the onchange events in ACE Editors
-        // the id "pID" is the returned parameter "domid" send to ACE editor
-        // via URL, e.g. "ace/ace.html?domid=jsoninput"  pID="jsoninput"
-        // pID is especially import, when different ACE editors in iFrames
-        // fire "onchange" events
-        write2value(pID,pContent);
-        //saveLocalStorage4ArrayID([pID]);
-     };
-
     </script>
     <!-- BEGIN: load JSON template -->
     <script src="tpl/jsoneditor_tpl.js"></script>
