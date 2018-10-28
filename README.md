@@ -1,5 +1,5 @@
 # JSON2Schema
-JSON2Schema is a small WebApp running totally in your browser, that supports developers in creating a JSON Schema for the JSON Editor originally developed by Jeremy Dorn and available as  package in https://www.github.com/json-editor/json-editor
+JSON2Schema is a small WebApp running totally in your browser, that supports developers in creating a JSON Schema for the JSON Editor [originally developed by Jeremy Dorn](https://github.com/jdorn/json-editor) and is now available and maintained as `json-editor` package in https://www.github.com/json-editor/json-editor
 
 ## Online Demo JSON2Schema
 You can check the JSON2Schema tool with the following URL:
