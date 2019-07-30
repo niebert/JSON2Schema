@@ -9,11 +9,12 @@ https://niebert.github.io/JSON2Schema
 Copy a JSON of your choice into the JSON2Schema tool and create a raw JSON schema, that [works in the JSON editor](https://www.github.com/json-editor/json-editor)
 
 ## JSON Schema
-A JSON Schema is a basically a file, that defines the layout of the input and edit elements for the JSON Editor.
+A JSON Schema is a basically a file, that defines the layout of the input and chosen editor elements for each key-value pair in given JSON for the [JSON Editor of Jeremy Dorn](https://www.github.com/json-editor/json-editor), i.e. it defines if the user of the JSON editor:
 * Edit a string,
-* use a select box for the graphical user interface GUI,
+* uses a select box for different options the graphical user interface GUI,
 * select a color,
 * select a data,
+* increase or decrease an integer value,
 * ...
 
 ## How Create a JSON Schema
