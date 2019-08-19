@@ -56,45 +56,6 @@ function getRemoteSchema() {
     console.log("Remote DB '"+vLinkParam.getValue("db")+"' undefined");
   }
 };
-function exportEditorHTML() {
-  if (vDataJSON.hasOwnProperty("jsoneditor")) {
-    console.log("Create JSON Editor");
-    
-    var vTemplate = vDataJSON["jsoneditor"]["template"];
-    var vJSONstring = getEditorValue("iACEinput");
-    var vSCHEMAstring = getEditorValue("iACEoutput");
-    vTemplate = replaceString(vTemplate,"___JSON_SCHEMA___",vSCHEMAstring);
-    vTemplate = replaceString(vTemplate,"___JSON_DATA___",vJSONstring);
-    saveFile2HDD("jsoneditor.html",vTemplate);
-  } else {
-    console.log("Template vDataJSON['jsoneditor'] is not defined/loaded!");
-  };
-}
-
-function X_exportEditorHTML() {
-  var vJSONstring = getEditorValue("iACEinput");
-  var vSCHEMAstring = getEditorValue("iACEoutput");
-  var vEditorHTML = createEditorHTML4SchemaJSON(vSCHEMAstring,vJSONstring);
-  if (vEditorHTML) {
-    saveFile2HDD("jsoneditor.html",vEditorHTML);
-  } else {
-    console.log("ERROR: File export failed in exportEditorHTML()");
-  };
-};
-
-function createEditorHTML4SchemaJSON(pSchema,pJSON) {
-  var iFrameDoc = getIFrameDocument("iTemplate");
-  if (iFrameDoc) {
-    console.log("Template '"+vFilename+"' loaded");
-    var vTemplate = iFrameDoc.getElementsByTagName("html")[0].innerHTML;
-    vTemplate = "<!DOCTYPE html>\n</html>\n"+vTemplate+"\n</html>"
-    vTemplate = replaceString(vTemplate,"___JSON_SCHEMA___",pSchema);
-    vTemplate = replaceString(vTemplate,"___JSON_DATA___",pJSON);
-    return vTemplate;
-  } else {
-    console.log("ERROR: Loading Template '"+vFilename+"' failed");
-  }
-}
 
 function getWinOpenerDB() {
   var vWinOpener = getWinOpener();
