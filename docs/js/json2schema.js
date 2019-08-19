@@ -1,16 +1,33 @@
+/* ---------------------------------------
+ Exported Module Variable: getSchema4JSON
+ Package:  json2schema4editor
+ Version:  0.0.6  Date: 2019/07/30 17:38:08
+ Homepage: https://gitlab.com/niehausbert/JSON2Schema#readme
+ Author:   Bert Niehaus
+ License:  MIT
+ Date:     2019/07/30 17:38:08
+ Require Module with:
+    const getSchema4JSON = require('json2schema4editor');
+ JSHint: installation with 'npm install jshint -g'
+ ------------------------------------------ */
+
+/*jshint  laxcomma: true, asi: true, maxerr: 150 */
+/*global alert, confirm, console, prompt */
+
 
 function onClickSchema4JSON(pInputID,pOutputID,pTitleID) {
   var vRootTitle = getValueDOM(pTitleID);
 
-  var vStringJSON = getEditorValue(pInputID);
+  //var vStringJSON = getEditorValue(pInputID);
+  var vStringJSON = getValueDOM(pInputID);
   var vJSON = getJSON4String(vStringJSON);
   if (vJSON) {
     var vSchema = getSchema4JSON(vJSON,vRootTitle);
-    vSchema["title"] = vRootTitle;
+    vSchema.title = vRootTitle;
     vSchema.options.collapsed = false;
     var vStringSchema = JSON.stringify(vSchema,null,4);
-    //write2value(pOutputID,vStringSchema);
-    setEditorValue(pOutputID,vStringSchema);
+    write2value(pOutputID,vStringSchema);
+    //setEditorValue(pOutputID,vStringSchema);
     $('#pSchemaOutput').show();
   } else {
     console.log("ERROR: onClickSchema4JSON('"+pInputID+"','"+pOutputID+"') - Parsing on JSON string had errors");
@@ -53,7 +70,7 @@ function getSchema4JSON(pJSON,pTitle) {
   convertJSON2Schema(pJSON,vPath,vSchema,vTypeTree,vEditorPath,vTitle);
   //return vTypeTree;
   return vSchema;
-};
+}
 
 function getTypeTree4JSON(pJSON) {
   // clones the original JSON to get the JSON structure of the TypeTree
@@ -63,25 +80,25 @@ function getTypeTree4JSON(pJSON) {
   // arrays and hashes/objects remain untouched
   createTypeTree4JSON(pJSON,vTypeTree);
   return vTypeTree;
-};
+}
 
 function toUpperCase1Char(pString) {
   // converts first character to uppercase.
   var vString = pString || "";
   if (vString.indexOf("/")>=0) {
     vString = vString.slice(vString.lastIndexOf("/")+1);
-  };
+  }
   vString = vString.replace(/[^A-Za-z0-9]/g,"_"); // remove illegial characters in variable name
   return vString.charAt(0).toUpperCase() + vString.slice(1);
-};
+}
 
 
 function getID4EditorPath(pPath) {
   var vID = pPath;
-  var vSlashPos = vID.lastIndexOf(".")
+  var vSlashPos = vID.lastIndexOf(".");
   if (vSlashPos>0) {
     vID = pPath.substring(vSlashPos+1);
-  };
+  }
   return vID;
 }
 
@@ -89,20 +106,20 @@ function getTitle4EditorPath(pPath,pType,pRootTitle) {
   var vTitle = getID4EditorPath(pPath);
   if (vTitle.length>0) {
     vTitle = var2title(vTitle);
-  };
+  }
   //e.g. pPath = root.* vTitle = "*"
   if (vTitle == "*") {
     pPath = pPath.substr(0,pPath.lastIndexOf("."));
     vTitle = getTitle4EditorPath(pPath);
-  };
+  }
   if (vTitle == "Root") {
     if (pRootTitle) {
       vTitle = pRootTitle;
-    };
-  };
+    }
+  }
   if (vTitle.replace(/\s/g,"") == "") {
     vTitle = "Title "+pPath;
-  };
+  }
   vTitle = var2title(vTitle);
   return vTitle;
 }
@@ -115,9 +132,9 @@ function var2title(pName) {
     var vNameArr = vName.split(" ");
     for (var i = 0; i < vNameArr.length; i++) {
       vNameArr[i] = toUpperCase1Char(vNameArr[i]);
-    };
+    }
     vName = vNameArr.join(" ");
-  };
+  }
   return vName;
 }
 
@@ -128,8 +145,8 @@ function getDescription4EditorPath(pPath,pType,pDescription) {
     if (pDescription != "") {
       vDescription = pDescription;
     } else {
-    };
-  };
+    }
+  }
   return vDescription;
 }
 
@@ -141,10 +158,10 @@ function getTitle4JSON(pEditorPath,pType,pTitle) {
       vTitle = pTitle;
     } else {
       vTitle = getTitle4EditorPath(pEditorPath);
-    };
-  };
+    }
+  }
   return vTitle;
-};
+}
 
 function createTypeTree4JSON(pJSON,pTypeTree) {
   var vType = getType4JSON(pJSON);
@@ -157,12 +174,12 @@ function createTypeTree4JSON(pJSON,pTypeTree) {
           // loop over key value pairs of hash
           vSubType = getType4JSON(pJSON[key]);
           if ((vSubType == "array") || (vSubType == "object")) {
-            createTypeTree4JSON(pJSON[key],pTypeTree[key])
+            createTypeTree4JSON(pJSON[key],pTypeTree[key]);
           } else {
             pTypeTree[key] = vSubType;
           }
         }
-      };
+      }
     break;
     //---- ARRAY -------------
     case "array":
@@ -173,19 +190,19 @@ function createTypeTree4JSON(pJSON,pTypeTree) {
         } else {
           pTypeTree[i] = vSubType;
         }
-      };
+      }
     break;
     default:
       console.log("createTypeTree4JSON() default - do nothing");
-  };
-};
+  }
+}
 
 function getID4Path(pPath) {
   var vID = pPath;
-  var vSlashPos = vID.lastIndexOf("/")
+  var vSlashPos = vID.lastIndexOf("/");
   if (vSlashPos>0) {
     vID = pPath.substring(vSlashPos+1);
-  };
+  }
   return vID;
 }
 
@@ -195,22 +212,22 @@ function convertJSON2Schema(pJSON,pPath,pSchema,pTypeTree,pEditorPath,pTitle) {
   // pTypeTree is need for checking deep equal for "oneOf" definition in arrays
   var vType = getType4JSON(pJSON);
   //---set Type and ID---
-  pSchema["type"] = vType;
+  pSchema.type = vType;
   // check if root node of JSON
   if (pPath == "") {
     // replace root ID with a link to JSON
-    pSchema["id"] = "https://niebert.github.io/json-editor";
+    pSchema.id = "https://niebert.github.io/json-editor";
   } else {
-    pSchema["id"] = pPath;
-  };
+    pSchema.id = pPath;
+  }
   //--- create schema dependent on typo of JSON node ----
   switch (vType) {
     //---- OBJECT/HASH -------
     case "object":
-      //pSchema["title"] = "Title of '"+pEditorPath+"' Type: '"+vType+"'";
-      pSchema["title"] = getTitle4EditorPath(pEditorPath,vType,vTitle);
+      //pSchema.title = "Title of '"+pEditorPath+"' Type: '"+vType+"'";
+      pSchema.title = getTitle4EditorPath(pEditorPath,vType,vTitle);
       console.log("Title for Object='"+vTitle+"'");
-      pSchema["options"] = {
+      pSchema.options = {
           "disable_collapse": false,
           "disable_edit_json": false,
           "disable_properties": false,
@@ -221,9 +238,9 @@ function convertJSON2Schema(pJSON,pPath,pSchema,pTypeTree,pEditorPath,pTitle) {
     break;
     //---- ARRAY -------------
     case "array":
-      pSchema["title"] = getTitle4EditorPath(pEditorPath,vType,vTitle);
-      pSchema["format"] = "tabs";
-      pSchema["options"] = {
+      pSchema.title = getTitle4EditorPath(pEditorPath,vType,vTitle);
+      pSchema.format = "tabs";
+      pSchema.options = {
           "disable_collapse": false,
           "disable_array_add": false,
           "disable_array_delete": false,
@@ -232,90 +249,90 @@ function convertJSON2Schema(pJSON,pPath,pSchema,pTypeTree,pEditorPath,pTitle) {
           "collapsed": false,
           "hidden": false
       };
-      convertArray2Schema(pJSON,pPath,pSchema,pTypeTree,pEditorPath,pSchema["title"]);
+      convertArray2Schema(pJSON,pPath,pSchema,pTypeTree,pEditorPath,pSchema.title);
     break;
     //---- STRING ------------
     case "string":
-      //pSchema["title"] = "Title of '"+pEditorPath+"' Type: '"+vType+"'";
-      pSchema["title"] = getTitle4EditorPath(pEditorPath,vType,vTitle);
-      pSchema["default"] = pJSON; //"Default text of "+vType+" variable";
-      pSchema["format"] = determineFormat4String(pJSON);
-      pSchema["description"] = getDescription4EditorPath(pPath,vType);
+      //pSchema.title = "Title of '"+pEditorPath+"' Type: '"+vType+"'";
+      pSchema.title = getTitle4EditorPath(pEditorPath,vType,vTitle);
+      pSchema.default = pJSON; //"Default text of "+vType+" variable";
+      pSchema.format = determineFormat4String(pJSON);
+      pSchema.description = getDescription4EditorPath(pPath,vType);
       //"A description for '"+getID4Path(pPath)+"'  Type: '"+vType+"'";
-      pSchema["options"] = {
+      pSchema.options = {
           "hidden": false
       };
     break;
     //---- NUMBER ------------
     case "number":
-      //pSchema["title"] = "Title of '"+pEditorPath+"' Type: '"+vType+"'";
-      pSchema["title"] = getTitle4EditorPath(pEditorPath,vType,vTitle);
-      pSchema["default"] = pJSON;
-      pSchema["description"] = "A description for '"+getID4Path(pPath)+"'  Type: '"+vType+"'";
-      pSchema["options"] = {
+      //pSchema.title = "Title of '"+pEditorPath+"' Type: '"+vType+"'";
+      pSchema.title = getTitle4EditorPath(pEditorPath,vType,vTitle);
+      pSchema.default = pJSON;
+      pSchema.description = "A description for '"+getID4Path(pPath)+"'  Type: '"+vType+"'";
+      pSchema.options = {
           "hidden": false
       };
     break;
     //---- INTEGER ------------
     case "integer":
-      //pSchema["title"] = "Title of '"+pEditorPath+"' Type: '"+vType+"'";
-      pSchema["title"] = getTitle4EditorPath(pEditorPath,vType,vTitle);
-      pSchema["default"] = pJSON;
-      pSchema["description"] = "A description for '"+getID4Path(pPath)+"'  Type: '"+vType+"'";
-      pSchema["options"] = {
+      //pSchema.title = "Title of '"+pEditorPath+"' Type: '"+vType+"'";
+      pSchema.title = getTitle4EditorPath(pEditorPath,vType,vTitle);
+      pSchema.default = pJSON;
+      pSchema.description = "A description for '"+getID4Path(pPath)+"'  Type: '"+vType+"'";
+      pSchema.options = {
           "hidden": false
       };
     break;
     //---- BOOLEAN ------------
     case "boolean":
-      //pSchema["title"] = "Title of '"+pEditorPath+"' Type: '"+vType+"'";
-      pSchema["title"] = getTitle4EditorPath(pEditorPath,vType,vTitle);
-      pSchema["format"] = "checkbox";
-      pSchema["default"] = pJSON;
-      pSchema["description"] = "A description for '"+getID4Path(pPath)+"'  Type: '"+vType+"'";
-      pSchema["options"] = {
+      //pSchema.title = "Title of '"+pEditorPath+"' Type: '"+vType+"'";
+      pSchema.title = getTitle4EditorPath(pEditorPath,vType,vTitle);
+      pSchema.format = "checkbox";
+      pSchema.default = pJSON;
+      pSchema.description = "A description for '"+getID4Path(pPath)+"'  Type: '"+vType+"'";
+      pSchema.options = {
           "hidden": false
       };
     break;
     default:
-      //pSchema["title"] = "Title of '"+pEditorPath+"' Type: '"+vType+"'";
-      pSchema["title"] = getTitle4EditorPath(pEditorPath,vType,vTitle);
-      pSchema["default"] = null;
-      pSchema["description"] = "A description for '"+getID4Path(pPath)+"'  Type: '"+vType+"'";
-      pSchema["options"] = {
+      //pSchema.title = "Title of '"+pEditorPath+"' Type: '"+vType+"'";
+      pSchema.title = getTitle4EditorPath(pEditorPath,vType,vTitle);
+      pSchema.default = null;
+      pSchema.description = "A description for '"+getID4Path(pPath)+"'  Type: '"+vType+"'";
+      pSchema.options = {
           "hidden": false
       };
-    };
+    }
 
-    console.log("SchemaGen - Path: '"+pPath+"' Type='"+vType+"' Title='"+pSchema["title"]+"'");
-};
+    console.log("SchemaGen - Path: '"+pPath+"' Type='"+vType+"' Title='"+pSchema.title+"'");
+}
 
 function convertObject2Schema(pJSON,pPath,pSchema,pTypeTree,pEditorPath) {
   // the array of all required keys in the hash/object
-  pSchema["defaultProperties"] = [];
+  pSchema.defaultProperties = [];
   // properties contains one schema for every key
-  pSchema["properties"] = {};
+  pSchema.properties = {};
   var order_index = 10;
   var order_increment = 10;
   for (var key in pJSON) {
     if (pJSON.hasOwnProperty(key)) {
       // set the key as required property in object/hash
-      pSchema["defaultProperties"].push(key);
+      pSchema.defaultProperties.push(key);
       // create the hash for all properties
-      pSchema["properties"][key] = {};
+      pSchema.properties[key] = {};
       // now call convertJSON2Schema() on sub-structure of JSON
-      convertJSON2Schema(pJSON[key],pPath+"/properties/"+key,pSchema["properties"][key],pTypeTree[key],pEditorPath+"."+key);
-      pSchema["properties"][key]["propertyOrder"] = order_index;
+      convertJSON2Schema(pJSON[key],pPath+"/properties/"+key,pSchema.properties[key],pTypeTree[key],pEditorPath+"."+key);
+      pSchema.properties[key].propertyOrder = order_index;
       order_index += order_increment;
-    };
-  };
-};
+    }
+  }
+}
 
 function convertArray2Schema(pJSON,pPath,pSchema,pTypeTree,pEditorPath,pItemTitle) {
   var vItemTitle = pItemTitle || "Record";
   var vID = "";
-  pSchema["items"] = {};
-  pSchema["items"]["headerTemplate"] = vItemTitle+" {{i1}}";
+  pSchema.items = {};
+  pSchema.items.headerTemplate = vItemTitle+" {{i1}}";
   var vItems = [];
   var vDefaults = [];
   for (var i = 0; i < pJSON.length; i++) {
@@ -328,7 +345,7 @@ function convertArray2Schema(pJSON,pPath,pSchema,pTypeTree,pEditorPath,pItemTitl
     console.log("Compare JSON1:\n"+JSON.stringify(pTypeTree[i],null,4));
     /* Deep Equal Check
     for (var k = 0; k < i; k++) {
-        console.log("Compare JSON2["+k+"]:\n"+JSON.stringify(pTypeTree[k],null,4));
+        console.log("Compare JSON2.+k+"]:\n"+JSON.stringify(pTypeTree[k],null,4));
         if(_.isEqual(pTypeTree[k], pTypeTree[i])){
           vDeepEqual = true;
         };
@@ -338,29 +355,29 @@ function convertArray2Schema(pJSON,pPath,pSchema,pTypeTree,pEditorPath,pItemTitl
     */
     if (vDeepEqual == false) {
         vItems.push(vHash4ID);
-    };
-  };
+    }
+  }
   // if more than one vItems are present in array, use "oneOf" for schema.
   if (vItems.length > 1) {
-    for (var i = 0; i < vItems.length; i++) {
-      vItems[i]["id"] = pPath+"/oneof"+i;
-      vItems[i]["title"] = "oneof "+i+" "+pPath;
-    };
-    pSchema["items"]["oneOf"] = vItems;
+    for (var k = 0; k < vItems.length; k++) {
+      vItems[k].id = pPath+"/oneof"+k;
+      vItems[k].title = "oneof "+k+" "+pPath;
+    }
+    pSchema.items.oneOf = vItems;
   } else {
-    pSchema["items"] = vItems[0];
-  };
-};
+    pSchema.items = vItems[0];
+  }
+}
 
 
 function determineFormat4String(pString) {
   var vColorRegEx = new RegExp("^#[0-9a-fA-F]{6}$");
   var vGeolocRegEx = new RegExp("^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$");
   if (vColorRegEx.test(pString) == true) {
-    return "color"
+    return "color";
   } else if (pString.indexOf("\n") >= 0) {
-    return "textarea"
+    return "textarea";
   } else {
-    return "text"
+    return "text";
   }
 }
