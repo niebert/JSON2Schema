@@ -12,6 +12,12 @@ html {
 body {
   margin: 0;
 }
+
+.loader {
+  font-size: 48px;
+  text-align: center;
+}
+
 article,
 aside,
 details,
@@ -6760,8 +6766,12 @@ body {
   margin: 3em;
   background-color: #CACACA; /* Grey */
 }
-button {
-  background-color: blue; /* Blue #008CBA */
+.bluebutton {
+  background-color: #336699; /* Blue #008CBA */
+  color: white
+}
+.secondarybutton {
+  background-color: #909090; /* Blue #008CBA */
   color: white
 }
 .demolist {
