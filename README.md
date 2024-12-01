@@ -2,18 +2,17 @@
 ## [JSON2Schema to GitHub](https://niebert.github.io/JSON2Schema)
 This repository contains the [JSON2Schema Tool](https://niebert.github.io/JSON2Schema).
 
-### 
-## Backup JSON2Schema on GitLab
-Access to JSON2Schema on GitLab - URL: https://www.gitlab.com/niehausbert/JSON2Schema 
+###  Backup JSON2Schema on GitLab 
+Access to JSON2Schema on GitLab to repository as backup - URL: https://www.gitlab.com/niehausbert/JSON2Schema 
 
-## [JSON2Schema on GitLab](https://niehausbert.gitlab.io/JSON2Schema)
+### JSON2Schema on GitLab
 The [current version of JSON2Schema tool seems to be not available GitLab](https://niehausbert.gitlab.io/JSON2Schema). It generates
 * JSON schema from a give JSON,
 * provide an editor (ACE) to modify labels, ... in the generated JSON schema,
 * you can save the generated JSON schema,
 * <b style="color:red">NEW on GitLab</b> you can download a [complete JSON editor of Jeremy Dorn](https://niehausbert.gitlab.io/JSON2Schema) with the generated JSON schema. 
 
-## JSON2Schema
+### JSON2Schema
 JSON2Schema is a small WebApp running totally in your browser, that supports developers in creating a JSON Schema for the JSON Editor [originally developed by Jeremy Dorn](https://github.com/jdorn/json-editor) and is now available and maintained as `json-editor` package in https://www.github.com/json-editor/json-editor
 
 ## Online Demo JSON2Schema
