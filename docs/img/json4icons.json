@@ -1,0 +1,1351 @@
+{
+  "repository": "https://www.github.io/niebert/icons4menu", 
+  "date":       "2019/09/18",
+  "icons": [
+
+    {
+       "name": "action-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "action-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "alert-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "alert-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-d-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-d-l-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-d-l-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-d-r-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-d-r-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-d-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-l-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-l-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-r-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-r-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-u-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-u-l-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-u-l-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-u-r-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-u-r-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-u-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "audio-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "audio-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "back-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "back-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "bars-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "bars-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "bullets-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "bullets-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "calendar-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "calendar-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "camera-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "camera-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "carat-d-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "carat-d-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "carat-l-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "carat-l-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "carat-r-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "carat-r-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "carat-u-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "carat-u-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "check-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "check-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "clock-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "clock-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "cloud-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "cloud-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "comment-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "comment-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "delete-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "delete-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "edit-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "edit-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "eye-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "eye-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "forbidden-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "forbidden-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "forward-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "forward-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "gear-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "gear-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "grid-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "grid-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "heart-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "heart-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "home-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "home-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "info-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "info-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "location-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "location-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "lock-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "lock-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "mail-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "mail-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "minus-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "minus-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "navigation-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "navigation-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "phone-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "phone-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "plus-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "plus-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "power-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "power-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "recycle-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "recycle-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "refresh-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "refresh-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "search-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "search-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "shop-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "shop-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "star-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "star-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "tag-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "tag-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "user-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "user-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "video-black.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+   ,
+    {
+       "name": "video-white.png",
+       "path": "img/icons-png",
+       "used": false
+    }
+  ]
+,
+    {
+       "name": "action-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "action-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "alert-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "alert-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-d-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-d-l-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-d-l-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-d-r-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-d-r-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-d-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-l-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-l-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-r-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-r-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-u-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-u-l-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-u-l-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-u-r-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-u-r-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "arrow-u-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "audio-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "audio-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "back-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "back-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "bars-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "bars-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "bullets-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "bullets-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "calendar-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "calendar-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "camera-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "camera-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "carat-d-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "carat-d-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "carat-l-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "carat-l-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "carat-r-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "carat-r-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "carat-u-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "carat-u-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "check-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "check-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "clock-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "clock-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "cloud-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "cloud-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "comment-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "comment-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "delete-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "delete-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "edit-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "edit-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "eye-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "eye-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-audio-backward.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-audio-eject.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-audio-forward.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-audio-pause.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-audio-play.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-audio-record.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-audio-stop.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-barcode.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-copy.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-edit.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-enumeration.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-file-save-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-file-save.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-folder-open-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-folder-open.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-font.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-hamburger-icon.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-list.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-paste.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-print.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-spinner.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-tablet.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-trash-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "fa-trash.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "forbidden-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "forbidden-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "forward-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "forward-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "gear-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "gear-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "grid-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "grid-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "heart-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "heart-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "home-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "home-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "info-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "info-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "location-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "location-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "lock-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "lock-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "mail-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "mail-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "minus-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "minus-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "navigation-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "navigation-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "phone-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "phone-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "plus-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "plus-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "power-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "power-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "recycle-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "recycle-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "refresh-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "refresh-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "search-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "search-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "shop-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "shop-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "star-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "star-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "tag-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "tag-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "user-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "user-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "video-black.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+   ,
+    {
+       "name": "video-white.svg",
+       "path": "img/icons-svg",
+       "used": false
+    }
+  ]
+}
