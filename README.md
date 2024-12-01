@@ -5,6 +5,25 @@ This repository contains the [JSON2Schema Tool](https://niebert.github.io/JSON2S
 ###  Backup JSON2Schema on GitLab 
 Access to JSON2Schema on GitLab to repository as backup - URL: https://www.gitlab.com/niehausbert/JSON2Schema 
 
+### Offline or Offline Use of JSON2Schema
+
+####  Online Demo JSON2Schema
+You can check the JSON2Schema tool with the following URL:
+
+* https://niebert.github.io/JSON2Schema on GitHub 
+* https://niehausbert.gitlab.io/JSON2Schema on GitLab 
+* Copy a JSON of your choice into the JSON2Schema tool and
+* create a raw JSON schema that works in the  [JSON editor](https://www.github.com/json-editor/json-editor) see also [repository of Jeremy Dorn](https://github.com/jdorn/json-editor)
+
+
+####  Offine Demo JSON2Schema
+* clone repository or download ZIP of repsository and start the `docs/index.html` in your browser (e.g. firefox).
+* start `doc/index.html` contains the HTML5 tool. 
+* Copy a JSON of your choice into the JSON2Schema tool and
+* create a raw JSON schema that works in the  [JSON editor](https://www.github.com/json-editor/json-editor) see also [repository of Jeremy Dorn](https://github.com/jdorn/json-editor)
+
+If online use on GitLab 
+
 ### JSON2Schema on GitLab
 The [current version of JSON2Schema tool seems to be not available GitLab](https://niehausbert.gitlab.io/JSON2Schema). It generates
 * JSON schema from a give JSON,
@@ -15,12 +34,6 @@ The [current version of JSON2Schema tool seems to be not available GitLab](https
 ### JSON2Schema
 JSON2Schema is a small WebApp running totally in your browser, that supports developers in creating a JSON Schema for the JSON Editor [originally developed by Jeremy Dorn](https://github.com/jdorn/json-editor) and is now available and maintained as `json-editor` package in https://www.github.com/json-editor/json-editor
 
-## Online Demo JSON2Schema
-You can check the JSON2Schema tool with the following URL:
-
-https://niebert.github.io/JSON2Schema
-
-Copy a JSON of your choice into the JSON2Schema tool and create a raw JSON schema, that [works in the JSON editor](https://www.github.com/json-editor/json-editor)
 
 ## JSON Schema
 A JSON Schema is a basically a file, that defines the layout of the input and chosen editor elements for each key-value pair in given JSON for the [JSON Editor of Jeremy Dorn](https://www.github.com/json-editor/json-editor), i.e. it defines if the user of the JSON editor:
