@@ -1,27 +1,445 @@
-<HTML>
-	<HEAD>
-		<TITLE>JSON2Schema Redirect</TITLE>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>JSON Editor Creator for JSON Schema</title>
+    <!-- JQuery JS and CSS -->
+    <script src="jquery/external/jquery/jquery.js" type="text/javascript"></script>
 
-<link href="css/main.css" rel="stylesheet">
+     <!-- Bootstrap Core CSS -->
+     <link href="css/bootstrap.min.css" rel="stylesheet">
+     <!-- Images CSS -->
+     <link href="css/image-spin.css" rel="stylesheet">
+     <!-- Table CSS -->
+     <link href="css/table.css" rel="stylesheet">
 
-	<BODY>
-<H2>JSON2Schema</H2>
-<H3>Repository Migration to GitLab: 29.07.2019</H3>
-Internal discussions in the team about the OpenSource Concepts led to the decision to migrate this <a href="https://www.gitlab.com/niehausbert/JSON2Schema" target="_blank">repository to GitLab</a>.
-<hr>
-<center>
-<h3>New <a href='https://niehausbert.gitlab.io/JSON2Schema/' target='_blank'>JSON2Schema  on GitLab</a></h3>
-The new tool exports not only the schema it is able to create a full JSON editor in 5 minutes from a given JSON. The JSON editor works offline and uses the browser as runtime environment (see <a href="https://en.wikiversity.org/wiki/AppLSAC" target="_blank">AppLSAC on Wikiversity</a>)
-</center>
-<HR>
-<H3> Old Repository on GitHub</H3>
-<ul>
-	<li>
-	 	<a href="https://www.github.com/niebert/JSON2Schema" target="_blank">OLD GitHub-repository 	JSON2Schema</a>
-	</li>
-	<li>
-	 	<a href="json2schema.html" target="_blank">OLD	JSON2Schema Tool on GitHub</a>
-	</li>
-</ul>
-</BODY>
-</HTML>
+	 <!--
+     <link href="css/font-awesome.min.css" rel="stylesheet">
+     -->
+     <link href="css/main.css" rel="stylesheet">
+     <link href="css/jquery-ui.css" rel="stylesheet">
+     <link href="css/jquery-white-icons.css" rel="stylesheet">
+     <!--
+     <script src="ace2_4_1/ace.js" type="text/javascript" charset="utf-8"></script>
+     -->
+     <!-- ACE Editor -->
+     <script src="ace/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+     <script src="js/lodash.js"></script>
+     <script src="js/arrayhash.js"></script>
+     <script src="js/eventhandler.js"></script>
+     <script src="js/handlebars4code.js"></script>
+     <script src="js/predbedit.js"></script>
+     <script src="js/filesaver.js"></script>
+     <!-- iframe.js necessary for setting the iframe ACE content
+     <script src="js/iframe.js"></script>
+     -->
+     <script src="js/jszip.js"></script>
+     <!-- linkparam.js necessary for reading the JSON input from link parameter "jsoninput" -->
+     <script src="js/linkparam.js"></script>
+     <script src="js/string.js"></script>
+     <script src="js/writedom.js"></script>
+     <script src="js/jsoneditor_i.js"></script>
+     <script src="js/json2schema.js"></script>
+     <script src="js/json2template.js"></script>
+     <script src="js/export4jsoneditor.js"></script>
+
+
+      <style>
+	#icons {
+		margin: 0;
+		padding: 0;
+    background-color: red;
+	}
+	#icons li {
+		margin: 2px;
+		position: relative;
+		padding: 4px 0;
+		cursor: pointer;
+		float: left;
+		list-style: none;
+	}
+	#icons span.ui-icon {
+		float: left;
+		margin: 0 4px;
+	}
+	</style>
+
+     <script>
+     var jsoninput_editor = null;
+     // ZIP options
+     var vOptions = {
+       "app_folder":  "jsoneditor_app", // App Folder in ZIP: could be also "jsoneditor_app-master" if ZIP if downloaded from GitHub
+            // repository https://www.github.com/niebert/jsoneditor_app
+       "schema_id": "schema4json",      // schema path in ZIP: jsoneditor_app/schema/schema4json.js
+       "init_id":   "db_init",          // JSON init path in ZIP: jsoneditor_app/db/db_init.js - JSON for initializing the JSON Editor on delete event
+       "file_json": "my_data.json",
+       "template_id": "template4json"
+     };
+     //-------------------------------------------------------
+     // LINK PARAMETER: Evaluation link parameter in JSON Path
+     var vLinkParam = new LinkParam();
+     vLinkParam.init(document);
+     //-------------------------------------------------------
+     // Data JSON: Container for loaded JSON schema
+     var vDataJSON = {
+       "files4json": null,
+       "schema" : {}
+     };
+     //-------------------------------------------------------
+     // Set the default CSS theme and icon library globally
+     JSONEditor.defaults.theme = 'bootstrap3';
+     JSONEditor.defaults.iconlib = 'fontawesome4';
+     JSONEditor.plugins.ace.theme = 'xcode';
+     //-------------------------------------------------------
+       </script>
+    <script src="db/files4json.js" async></script>
+    <script src="schema/jsoninput_schema.js"></script>
+    <script>
+    //-------------------------------------------------------
+    // JSZip populate the exported JSON window.load Event
+    //-------------------------------------------------------
+    var zip = new JSZip();
+    </script>
+    <!-- BEGIN: load JSON template -->
+    <script src="tpl/jsoneditor_tpl.js"></script>
+    <!-- END:  load JSON template -->
+  </head>
+  <body  style="margin:20px;background-color:'#CACACA'">
+    <div class="loader">
+      <img class="image-icon image-spin" src="img/icons-svg/fa-spinner.svg">
+      Loading ...
+    </div>
+    <div style="text-align: center">
+      <h1>
+        <a href="https://www.github.com/niebert/JSON2Schema" target="_blank">JSON Schema & Editor Generator  <div id4marker="version" style="display: inline-block">2.2.13</div> </a>
+      </h1>
+      <h4>
+        JSON Schema Support Tool for <a href="https://github.com/json-editor/json-editor" target="_blank">JSON Editor</a> developed by <a href="https://github.com/jdorn" target="_blank">Jeremy Dorn</a>
+      </h4>
+    </div>
+    With this tool you can create a JSON schema and a complete JSON editor with your new input JSON. The JSON Editor is generated in your browser as ZIP file.
+    The ZIP file is based on <a href="https://github.com/niebert/jsoneditor_app/archive/master.zip"><tt>jsoneditor_app.zip</tt></a> (see GitHub-Repository: <a href="https://github.com/niebert/jsoneditor_app" target="_blank">https://github.com/niebert/jsoneditor_app</a>)
+    and is populated with the generated JSON Schema with <a href="https://stuk.github.io/jszip/" target="_blank">JSZip</a>.
+
+    <br>
+    <b>Wikiversity Support:</b> <button onclick="document.location.href='https://en.wikiversity.org/wiki/AppLSAC/Create'">Help AppLSAC</button>
+    <hr>
+    <!-- TITLE FOR TEMPLATE AND SCHEMA -->
+    <div id='jsoninput_holder' style="margin-right: 30px; margin-left: 30px"></div>
+    <div id="divJSONInput">
+      <h3>Schema Title</h3>
+      <b>Title:</b> <input type="text" id="tTitleSchema" value="My Schema Title">
+      <hr>
+    <!-- JSON INPUT -->
+      <h3>JSON Input</h3> Populate arrays just with one array element. You can add two different elements and JSON2Schema will create a oneOf-selector to the schema.
+      <textarea id="jsoninput" rows="10" cols="120" style="display:block">
+{
+   "collector": {
+     "firstname": "Bert",
+     "lastname": "Bond",
+     "gender": "___SELECT___male|female|other",
+     "email": "noname@example.com"
+   },
+   "numberarray": [34.5],
+   "data": [
+     {
+       "geolocation":"13.123213 34.343424",
+       "temperature": 23.5
+     },
+     {
+       "geolocation":"13.123213 34.343424",
+       "temperature": 23.5,
+       "ph": 7
+     }
+   ],
+   "done": false,
+   "color":"#12CA34"
+}
+      </textarea>
+    </div>
+    <script>
+      // JSON input can be set via the URL
+      // <form action="https://niebert.github.io/json-editor/json2schema.html" method="get">
+      //  <textarea name="jsoninput" rows="10" cols="80">
+      //  </textarea>
+      // </form>
+      if (vLinkParam.exists("jsoninput")) {
+        console.log("LinkParam: set 'jsoninput' as Link parameter of json2schema.html");
+        write2value("jsoninput",vLinkParam.getValue("jsoninput"));
+      };
+    </script>
+    <p id="pConverter">
+      <button id='bCreateTemplate' class="bluebutton" onclick="onClickTemplate4JSON('jsoninput','template4json','tTitleSchema',el('sOutFormat').value)">
+        <img src="img/icons-svg/grid-white.svg">
+        Create JSON Template
+      </button>
+      <select id="sOutFormat"  name="sOutFormat" >
+        <option value="text">Text</option>
+        <option value="latex">LaTeX</option>
+        <option value="markdown" selected="selected">Markdown</option>
+        <option value="mediawiki">MediaWiki</option>
+        <option value="html">HTML</option>
+        <option value="latex">LaTeX</option>
+        <!-- <option value="markdown_github">Markdown (GitHub)</option> -->
+        <option value="text">Text</option>
+      </select>
+      Add Template Comments: <input type="checkbox" id="cTemplateComments" checked>
+      <button id='bExportJSON'  class="secondarybutton" onclick="saveFile2HDD('myjson.json',getValueDOM('jsoninput'))">
+        <img src="img/icons-svg/fa-file-save-white.svg">
+        Export JSON
+      </button>
+    </p>
+    <!-- TEMPLATE FOR JSON -->
+    <div id="pTemplate4JSON" style="display:none">
+      <h3>Handelbars Template for JSON</h3>
+      <textarea id="template4json" rows="8" cols="120" style="display:block">
+      </textarea>
+      <p id="pCreateSchemaJSON">
+        <button id='bCreateSchema' class="bluebutton"  onclick="onClickSchema4JSON('jsoninput','schemaoutput','tTitleSchema')">
+          <img src="img/icons-svg/grid-white.svg">
+          Create JSON Schema
+        </button>
+        <button id='bTestTemplate'  class="secondarybutton" onclick="onClickOutput4JSON('jsoninput','template4json','output4template','tTitleSchema',el('sOutFormat').value)">
+          <img src="img/icons-svg/recycle-white.svg">
+          Output for Template
+        </button>
+        <button id='bExportJSON'  class="secondarybutton" onclick="exportTempate4JSON()">
+          <img src="img/icons-svg/fa-file-save-white.svg">
+          Export Template for JSON
+        </button>
+      </p>
+    </div>
+    <!-- OUTPUT FOR TEMPLATE -->
+    <div id="pOutput4Template" style="display:none">
+      <h3>Output for Template</h3>
+      <textarea id="output4template" rows="8" cols="120" style="display:block">
+      </textarea>
+      <p id="pCreateEditorJSON">
+        <button id='bCreateSchema2' class="bluebutton"  onclick="onClickSchema4JSON('jsoninput','schemaoutput','tTitleSchema')">
+          <img src="img/icons-svg/grid-white.svg">
+          Create JSON Schema
+        </button>
+        <button id='bExportOutput'  class="secondarybutton" onclick="saveFile2HDD('output4myjson.'+extension4format(el('sOutFormat').value,getValueDOM('output4template'))">
+          <img src="img/icons-svg/fa-file-save-white.svg">
+          Export Output
+        </button>
+      </p>
+    </div>
+    <!-- JSON SCHEMA -->
+    <div id="pSchemaOutput" style="display:none">
+      <h3>JSON Schema</h3>
+      <textarea id="schemaoutput" rows="10" cols="120" style="display:block">
+      </textarea>
+      <p id="pCreateEditorJSON">
+        <button id='bCreateEditor' class="bluebutton"  onclick="createEditorJSON()">
+          <img src="img/icons-svg/grid-white.svg">
+          Create JSON Editor
+        </button>
+        <button id='bExportJSON'  class="secondarybutton" onclick="saveFile2HDD('schema4myjson.json',getValueDOM('schemaoutput'))">
+          <img src="img/icons-svg/fa-file-save-white.svg">
+          Export Schema
+        </button>
+      </p>
+    </div>
+    <div id="divEditor" style="display:none">
+      <div id='editor_holder' style="margin-right: 30px; margin-left: 30px"></div>
+      <hr>
+      <div id='button_holder' style="margin:20px">
+        <button id='bExportEditor' class="bluebutton" onclick="msg_save_zip();exportEditorZIP(zip,vOptions);return false">
+          <img src="img/icons-svg/fa-file-save-white.svg">
+          Export JSON Editor as ZIP
+        </button>
+        <button id='exportJSON4DB' class="secondarybutton"  onclick="saveInitDB()">
+          <img src="img/icons-svg/fa-file-save-white.svg">
+          Export 'db_init.js'
+        </button>
+        <button id='bExportSchema' class="secondarybutton" onclick="saveFile2HDD('schema4json.js','vDataJSON.schema4json = ' + getValueDOM('schemaoutput')+';');return false">
+          <img src="img/icons-svg/fa-file-save-white.svg">
+          Export 'schema4json.js'
+        </button>
+        <button id='bCloseWindow'  class="secondarybutton" onclick="syncRemoteSchema();window.close()" style="display:none">Close</button>
+        <button id='bExportEditorContent'  class="secondarybutton">
+          <img src="img/icons-svg/fa-file-save-white.svg" onclick="saveInnerHTML()">
+          Export Editor innerHTML
+        </button>
+        <button id='view'  class="secondarybutton" onclick="console.log(JSON.stringify(editor.getValue()))" style="display:none">View (console.log)</button>
+      </div>
+    </div>
+    <script>
+    //-------------------------------------------------------
+    // JSON Editor: Initialize the Input JSON editor
+
+      function parseInputJSON(pJSONstring) {
+        var vJSON = null;
+        if (pJSONstring) {
+              try {
+                // parse JSON
+                vJSON = JSON.parse(pJSONstring);
+              } catch(e) {
+                alert("Parse Input JSON:\n"+e); // catch error in the above string, if there are any!
+              }
+        };
+        return vJSON;
+    }
+
+    var vJSON = parseInputJSON(getValueDOM("jsoninput"));
+    var vInputEditorDOM = document.getElementById('jsoninput_holder')
+    jsoninput_editor = new JSONEditor(vInputEditorDOM,{
+      ajax: true,
+      schema: vDataJSON.schema.jsoninput,
+      startval: {
+        "schematitle": getValueDOM("tTitleSchema"),
+        "jsoninput": getValueDOM("jsoninput")
+      },
+      // theme of ACE code editor
+      plugins: {
+          ace: {
+            theme: 'xcode'
+          }
+      },
+
+    });
+
+    //-------------------------------------------------------
+    // JSON Editor: Initialize the editor with JSON input and JSON schema
+    //-------------------------------------------------------
+    function createEditorJSON() {
+        $("#divEditor").show();
+        $("#editor_holder").html("");
+        var vInputJSON;
+        var vSchemaJSON;
+        // get the DOM editor holder
+        var vEditorDOM = document.getElementById('editor_holder');
+        //--------------------------
+        // Parse the JSON input
+        var vJSONstring = getValueDOM("jsoninput");
+        var vErrors = 0;
+        if (vJSONstring) {
+          try {
+            // parse JSON
+            vInputJSON = JSON.parse(vJSONstring);
+          } catch(e) {
+            vErrors++;
+            alert("Parse JSON Input:\n"+e); // catch error in the above string, if there are any!
+          }
+        };
+        //--------------------------
+        // Parse the JSON Schema
+        var vJSONstring = getValueDOM("schemaoutput");
+        if (vJSONstring) {
+          try {
+            // parse JSON
+            vSchemaJSON = JSON.parse(vJSONstring);
+          } catch(e) {
+            vErrors++;
+            alert("Parse JSON Schema:\n"+e); // catch error in the above string, if there are any!
+          }
+        };
+        //--------------------------
+        // if parsing of JSON strings create no errors create new JSON editor
+        if (vErrors == 0) {
+          // destroy a previous instance of the editor, if it exists,
+          // to free some resources
+          if (editor) {
+            editor.destroy();
+          };
+          // create a new instance of the editor
+          console.log("Create JSON Editor instance");
+          var editor = new JSONEditor(vEditorDOM,{
+            ajax: true,
+            schema: vSchemaJSON,
+            startval: vInputJSON,
+            // theme of ACE code editor
+            plugins: {
+                ace: {
+                  theme: 'xcode'
+                }
+            },
+
+          });
+          //-------------------------------------------------------
+          //---JSON EDITOR Handle Change Event---------------------
+          editor.on('change',function() {
+            var vContent = JSON.stringify(editor.getValue(),null,4);
+            write2value("jsoninput",vContent);
+          });
+          //-------------------------------------------------------
+          // EXPORT JSON: Hook up the submit button to download JSONDB
+        };
+      }
+    </script>
+    <hr>
+    <center>
+      <font size="-1">
+        <b><a href="https://gitlab.com/niehausbert/JSON2Schema/-/archive/master/JSON2Schema-master.zip">JSON2Schema <div id4marker="version" style="display: inline-block">2.2.13</div> </a></b>  developed by Engelbert Niehaus 2017-2021<br>
+        <a href="https://www.gitlab.com/niehausbert/JSON2Schema" target="_blank">GitHub Repository with JSON2Schema Example</a> -
+        <a href="https://www.github.com/niebert/JSON2Schema" target="_blank">Uses Handlebars4Code</a> and <a href="https://www.github.com/niebert/icons4menu" target="_blank">Icon4Menu</a>
+        <br> based on JSON Editor by Jeremy Dorn -   <a href="https://www.github.com/json-editor/json-editor" target="_blank">current Version of JSON-Editor</a><br>
+        <a href="create_files4json.html" target="_blank">Create your own JSON2Schema Editor Generator</a>
+      </font>
+    </center>
+
+    <script>
+      var vLinkParam = new LinkParam();
+      vLinkParam.init(document);
+      if (vLinkParam.exists("jsoninput")) {
+        var json_string = vLinkParam.getValue("jsoninput");
+        console.log("JSON Input submitted to JSON2Schema:\n"+json_string);
+        document.getElementById("jsoninput").value = json_string;
+      } else {
+        console.log("JSON2Schema does not receive a JSON via LinkParameter 'jsoninput'")
+      }
+      if (vLinkParam.exists("schemaoutput")) {
+        var json_string = vLinkParam.getValue("schemaoutput");
+        console.log("JSON Schema submitted to JSON2Schema:\n"+json_string);
+        document.getElementById("schemaoutput").value = json_string;
+      } else {
+        console.log("JSON2Schema does not receive a JSON Schema via LinkParameter 'schemaoutput'")
+      }
+    </script>
+    <!-- ACE Editor
+    <script src="ace/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/xcode");
+        editor.session.setMode("ace/mode/javascript");
+    </script>
+    -->
+    <script>
+
+    function logAppFolder() {
+      console.log("App Folder: '"+vOptions.app_folder+"'");
+    }
+
+    $(window).load(function(){
+      $('.loader').hide();
+      var zip_json = vDataJSON.files4json.files[0];
+      var zip_data = zip_json.file;
+      console.log("zip_data.length="+zip_data.length+ " for file '" + zip_json.name + "'");
+      zip.loadAsync(zip_data,{"base64":true}).then(function (pzip) {
+        setAppFolderZIP(pzip,vOptions);
+        /*
+        pzip.forEach(function (relativePath, file){
+            console.log("File in ZIP: ", relativePath);
+        });
+        */
+      });
+      //setEditorValue("iACEinput",getValueDOM('jsoninput'));
+
+    });
+
+    // Use ACE Editor
+    var vUseACE = true;
+
+    if (vUseACE == true) {
+      $("#divJSONInput").hide()
+    }
+
+
+    setTimeout(logAppFolder,6000);
+
+    </script>
+    <script src="js/add_event_listener.js"></script>
+
+  </body>
+</html>
