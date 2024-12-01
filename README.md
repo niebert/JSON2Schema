@@ -8,7 +8,7 @@ Access to JSON2Schema on GitLab to repository as backup - URL: https://www.gitla
 ### Offline or Offline Use of JSON2Schema
 
 ####  Online Demo JSON2Schema
-You can check the JSON2Schema tool with the following URL:
+You can check the online versions of the JSON2Schema tool with both of the following URL:
 
 * https://niebert.github.io/JSON2Schema on GitHub 
 * https://niehausbert.gitlab.io/JSON2Schema on GitLab 
