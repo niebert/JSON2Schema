@@ -1,8 +1,13 @@
-#  Migration of [JSON2Schema to GitLab](ttps://niehausbert.gitlab.io/JSON2Schema)
-This repository contains the [old JSON2Schema Tool](https://niebert.github.io/JSON2Schema).
+
+## [JSON2Schema to GitHub](https://niebert.github.io/JSON2Schema)
+This repository contains the [JSON2Schema Tool](https://niebert.github.io/JSON2Schema).
+
+### 
+## Backup JSON2Schema on GitLab
+Access to JSON2Schema on GitLab - URL: https://www.gitlab.com/niehausbert/JSON2Schema 
 
 ## [JSON2Schema on GitLab](https://niehausbert.gitlab.io/JSON2Schema)
-The [current version of JSON2Schema tool is now available on GitLab](https://niehausbert.gitlab.io/JSON2Schema). It generates
+The [current version of JSON2Schema tool seems to be not available GitLab](https://niehausbert.gitlab.io/JSON2Schema). It generates
 * JSON schema from a give JSON,
 * provide an editor (ACE) to modify labels, ... in the generated JSON schema,
 * you can save the generated JSON schema,
