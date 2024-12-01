@@ -1,5 +1,5 @@
 
-## [JSON2Schema to GitHub](https://niebert.github.io/JSON2Schema)
+## [JSON2Schema to GitHub 1.2,24](https://niebert.github.io/JSON2Schema)
 This repository contains the [JSON2Schema Tool](https://niebert.github.io/JSON2Schema).
 
 ###  Backup JSON2Schema on GitLab 
