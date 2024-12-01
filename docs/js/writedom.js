@@ -1,3 +1,7 @@
+function el(pID) {
+  return document.getElementById(pID);
+}
+
 function getValueDOM(pID) {
   var vNode = document.getElementById(pID);
   var vReturn = "";

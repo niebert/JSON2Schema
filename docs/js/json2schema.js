@@ -1,5 +1,5 @@
 /* ---------------------------------------
- Exported Module Variable: getSchema4JSON
+ Exported Function in Module: getSchema4JSON
  Package:  json2schema4editor
  Version:  0.0.6  Date: 2019/07/30 17:38:08
  Homepage: https://gitlab.com/niehausbert/JSON2Schema#readme
@@ -13,6 +13,32 @@
 
 /*jshint  laxcomma: true, asi: true, maxerr: 150 */
 /*global alert, confirm, console, prompt */
+
+function displaySchema(pInputID,pOutputID,pTitleID) {
+  var vRootTitle = getValueDOM(pTitleID);
+
+  //var vStringJSON = getEditorValue(pInputID);
+  var vStringJSON = ""; //getValueDOM(pInputID);
+  var vJSON = null; //getJSON4String(vStringJSON);
+  if (vSchemaEditor) {
+    vJSON = vSchemaEditor.getValue();
+    if (vJSON) {
+      var vSchema = getSchema4Editor(vJSON,vRootTitle);
+      vSchema.title = vRootTitle;
+      vSchema.options.collapsed = false;
+      var vStringSchema = JSON.stringify(vSchema,null,4);
+      write2value(pOutputID,vStringSchema);
+      //setEditorValue(pOutputID,vStringSchema);
+      $('#pSchemaOutput').show();
+    } else {
+      console.error("ERROR: displaySchema('"+pInputID+"','"+pOutputID+"') - Parsing on JSON string had errors");
+    }
+  } else {
+    console.error("ERROR: displaySchema() - vSchemaEditor was not defined!");
+  }
+
+}
+
 
 
 function onClickSchema4JSON(pInputID,pOutputID,pTitleID) {
@@ -206,9 +232,32 @@ function getID4Path(pPath) {
   return vID;
 }
 
+function getStringDefault(pString) {
+  var vDefault = "";
+  var options = getEnumOptions(pString);
+  if (options.length > 0) {
+    vDefault = options[0];
+  }
+  return vDefault;
+}
+
+function getEnumOptions(pString) {
+  var vPrefix = "___SELECT___";
+  var options = [];
+  if (pString) {
+    if (pString.indexOf(vPrefix) == 0) {
+      // it is a selectbox
+      var opt_str = pString.substr(vPrefix.length,pString.length-vPrefix.length);
+      options = opt_str.split("|");
+    }
+  }
+  return options;
+}
+
 function convertJSON2Schema(pJSON,pPath,pSchema,pTypeTree,pEditorPath,pTitle) {
   //console.log("convertJSON2Schema('"+pPath+"') pTitle='"+pTitle+"'");
   var vTitle = pTitle || "Default Schema Title";
+  // vTitle is the Root Title of JSON
   // pTypeTree is need for checking deep equal for "oneOf" definition in arrays
   var vType = getType4JSON(pJSON);
   //---set Type and ID---
@@ -231,7 +280,7 @@ function convertJSON2Schema(pJSON,pPath,pSchema,pTypeTree,pEditorPath,pTitle) {
           "disable_collapse": false,
           "disable_edit_json": false,
           "disable_properties": false,
-          "collapsed": true,
+          "collapsed": false,
           "hidden": false
       };
       convertObject2Schema(pJSON,pPath,pSchema,pTypeTree,pEditorPath);
@@ -255,7 +304,13 @@ function convertJSON2Schema(pJSON,pPath,pSchema,pTypeTree,pEditorPath,pTitle) {
     case "string":
       //pSchema.title = "Title of '"+pEditorPath+"' Type: '"+vType+"'";
       pSchema.title = getTitle4EditorPath(pEditorPath,vType,vTitle);
-      pSchema.default = pJSON; //"Default text of "+vType+" variable";
+      pSchema.default = getStringDefault(pJSON); //"Default text of "+vType+" variable";
+      // check is default value has prefix "___SELECT___"
+      var options = getEnumOptions(pJSON);
+      if (options.length > 0) {
+        pSchema.enum = options;
+        //pSchema.enumTitles = options;
+      }
       pSchema.format = determineFormat4String(pJSON);
       pSchema.description = getDescription4EditorPath(pPath,vType);
       //"A description for '"+getID4Path(pPath)+"'  Type: '"+vType+"'";
@@ -359,12 +414,14 @@ function convertArray2Schema(pJSON,pPath,pSchema,pTypeTree,pEditorPath,pItemTitl
   }
   // if more than one vItems are present in array, use "oneOf" for schema.
   if (vItems.length > 1) {
+    console.log("ARRAY ONE OF - with " + vItems.length + " different items");
     for (var k = 0; k < vItems.length; k++) {
       vItems[k].id = pPath+"/oneof"+k;
       vItems[k].title = "oneof "+k+" "+pPath;
     }
     pSchema.items.oneOf = vItems;
   } else {
+    console.log("ARRAY ONE OF - single element array");
     pSchema.items = vItems[0];
   }
 }

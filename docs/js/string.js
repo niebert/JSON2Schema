@@ -129,6 +129,27 @@ function reduceIDName(pName) {
   return pName
 };
 
+function string2filename(pName) {
+  if (isString(pName)) {
+    if (pName != "") {
+      // pName= "This is Name / Notation? "
+      pName = pName.toLowerCase();
+      // pName= "this is name / notation? "
+      pName = pName.replace(/[^a-z0-9_]/g,"_");
+      // pName= "this_is_name___notation__"
+      pName = pName.replace(/_[_]+/g,"_");
+      // pName= "this_is_name_notation_"
+      pName = pName.replace(/_$/g,"");
+      // pName= "this_is_name_notation"
+    }
+  };
+  return pName;
+};
+
+function filename2ID(pFile) {
+  return reduceFileName(pFile)
+};
+
 function reduceFileName(pName) {
   if (isString(pName)) {
     if (pName != "") {
